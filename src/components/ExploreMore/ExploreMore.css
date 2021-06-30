@@ -2,3 +2,21 @@
     height: 200px;
     margin-top: 0 !important;
 }
+.footerIconSize{
+    font-size: 30px;
+    color: #fff;
+}
+.fbColor,.twitterColor,.youtubeColor{
+    height: 50px;
+    width: 50px;
+    border-radius: 100% !important;
+}
+.fbColor{
+    background-color: #3A5795 !important;
+}
+.twitterColor{
+    background-color: #1DA1F2 !important;
+}
+.youtubeColor{
+    background-color: #FF0000 !important;
+}
