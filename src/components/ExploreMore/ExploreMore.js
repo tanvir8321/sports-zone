@@ -4,11 +4,16 @@ import { faFacebookF, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ListGroup, Jumbotron } from 'react-bootstrap';
 import Header from '../Header/Header';
-import Female from '../../images/female.png';
 import './ExploreMore.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 const ExploreMore = () => {
     let { id } = useParams();
@@ -17,31 +22,37 @@ const ExploreMore = () => {
         const url = `https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=${id}`;
         fetch(url)
         .then(res => res.json())
-        .then(data => setLeagueDetail(data));
+        .then(data => setLeagueDetail(data.leagues['0']));
     },[])
-    console.log(leagueDetail);
+
+    const { dateFirstEvent, strCountry, strSport, strGender, strDescriptionEN, strLeague, strFanart2 } = leagueDetail;
+    console.log(leagueDetail)
     return (
         <div>
             <Header></Header>
+            <div className="container">
+                <div className="row justify-content-center">
+                    <Link className="btn btn-primary mt-3" to='/'>Home</Link>
+                </div>
+            </div>
             <div className="container mt-3">
                 <Jumbotron className="bg-primary text-white p-3">
                     <div className="row align-items-center">
                         <div className="col-12 col-md-6">
-                            <h1>Premier League ({id}) ---</h1>
+                            <h1>{ strLeague }</h1>
                             <ListGroup as="ul">
-                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faMapPin}/> Founded: February 20, 1992</ListGroup.Item>
-                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faFlag}/> Country: England</ListGroup.Item>
-                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faBasketballBall}/> Sport Type: Football</ListGroup.Item>
-                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faMale}/> Gender: Male</ListGroup.Item>
+                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faMapPin}/> Founded: {dateFirstEvent}</ListGroup.Item>
+                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faFlag}/> Country: { strCountry }</ListGroup.Item>
+                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faBasketballBall}/> Sport Type: { strSport }</ListGroup.Item>
+                                <ListGroup.Item as="li" className="bg-transparent border-0 px-0 py-1"><FontAwesomeIcon icon={faMale}/> Gender: { strGender }</ListGroup.Item>
                             </ListGroup>
                         </div>
                         <div className="col-12 col-md-6">
-                            <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={Female} alt="" srcset="" />
+                            <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={strFanart2} alt="" srcset="" />
                         </div>
                     </div>
                 </Jumbotron>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis eligendi assumenda recusandae ipsum libero ea molestiae odit. Ducimus, atque quam nulla dolorum laudantium nemo placeat eum! Aperiam quam at nulla.</p>
+                <p>{ strDescriptionEN }</p>
             </div>
             <footer className="container py-5">
                 <ListGroup as="ul" className="list-group-horizontal justify-content-center">

@@ -9,13 +9,22 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import { useState } from 'react';
+import { useEffect } from 'react';
 const LeagueCard = (props) => {
-    console.log(props.singleLeague)
+    const [ logo, setLogo ] = useState({});
     const {idLeague,strLeague,strLeagueAlternate,strSport} = props.singleLeague;
+    useEffect(()=>{
+        const url = `https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=${idLeague}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setLogo(data.leagues['0']));
+    },[])
+    const { strLogo } = logo;
     return (
             <div className="col-12 col-md-6 col-lg-4 mb-4">
-                <Card className="text-center pt-5">
-                <Card.Img variant="top" className="w-50 mx-auto mb-4" src={leagueOne} />
+                <Card className="text-center pt-5 bg-info">
+                <Card.Img variant="top" className="w-50 mx-auto mb-4" src={strLogo} />
                 <Card.Body>
                     <Card.Title>{strLeague}</Card.Title>
                     <Card.Text>

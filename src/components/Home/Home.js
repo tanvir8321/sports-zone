@@ -8,12 +8,12 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 const Home = () => {
     const [league, setLeague] = useState([]);
-    useEffect(()=>{
+    useEffect(() => {
         const url = 'https://www.thesportsdb.com/api/v1/json/1/all_leagues.php';
         fetch(url)
-        .then(res => res.json())
-        .then(data => setLeague(data.leagues));
-        
+            .then(res => res.json())
+            .then(data => setLeague(data.leagues));
+
     }, [])
     // league.map(lg => console.log(lg))
     return (
@@ -21,11 +21,11 @@ const Home = () => {
             <Header></Header>
             <div className="bg-league py-5">
                 <div className="container">
-                <div className="row">
-                    {
-                    league.slice(0, 10).map(singleLeague => <LeagueCard singleLeague={singleLeague}></LeagueCard>)
-                    }
-                </div>
+                    <div className="row">
+                        {
+                            league.slice(6, 20).map(singleLeague => <LeagueCard singleLeague={singleLeague}></LeagueCard>)
+                        }
+                    </div>
                 </div>
             </div>
             <Footer></Footer>
