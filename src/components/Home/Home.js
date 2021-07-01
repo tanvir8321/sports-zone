@@ -18,12 +18,14 @@ const Home = () => {
     // league.map(lg => console.log(lg))
     return (
         <div>
-            <Header></Header>
+            <Header>
+                <h1>Sports Zone</h1>
+            </Header>
             <div className="bg-league py-5">
                 <div className="container">
                     <div className="row">
                         {
-                            league.slice(6, 20).map(singleLeague => <LeagueCard singleLeague={singleLeague}></LeagueCard>)
+                            league.slice(38, 60).map(singleLeague => <LeagueCard singleLeague={singleLeague}></LeagueCard>)
                         }
                     </div>
                 </div>

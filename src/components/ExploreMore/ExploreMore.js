@@ -1,5 +1,5 @@
 import React from 'react';
-import { faBasketballBall, faMale, faFlag, faMapPin } from '@fortawesome/free-solid-svg-icons';
+import { faBasketballBall, faMale, faFlag, faMapPin, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ListGroup, Jumbotron } from 'react-bootstrap';
@@ -8,6 +8,10 @@ import './ExploreMore.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import maleLeague from '../../images/male.png';
+import femaleLeague from '../../images/female.jpg';
+import spineer from '../../images/spineer.gif';
+import Footer from '../Footer/Footer';
 import {
     BrowserRouter as Router,
     Switch,
@@ -25,18 +29,19 @@ const ExploreMore = () => {
         .then(data => setLeagueDetail(data.leagues['0']));
     },[])
 
-    const { dateFirstEvent, strCountry, strSport, strGender, strDescriptionEN, strLeague, strFanart2 } = leagueDetail;
-    console.log(leagueDetail)
+    const { dateFirstEvent, strCountry, strSport, strGender, strDescriptionEN, strLeague, strLogo } = leagueDetail;
     return (
         <div>
-            <Header></Header>
+            <Header>
+                <img src={strLogo} alt="" />
+            </Header>
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link className="btn btn-primary mt-3" to='/'>Home</Link>
+                    <Link className="btn btn-primary mt-3" to='/'><FontAwesomeIcon icon={faArrowLeft}/> Home</Link>
                 </div>
             </div>
             <div className="container mt-3">
-                <Jumbotron className="bg-primary text-white p-3">
+                <Jumbotron className="bg-info text-white p-3">
                     <div className="row align-items-center">
                         <div className="col-12 col-md-6">
                             <h1>{ strLeague }</h1>
@@ -48,7 +53,10 @@ const ExploreMore = () => {
                             </ListGroup>
                         </div>
                         <div className="col-12 col-md-6">
-                            <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={strFanart2} alt="" srcset="" />
+                            {
+                                strGender === 'Male' ? <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={maleLeague} alt="" srcset="" /> : strGender === 'Female' ? <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={femaleLeague} alt="" srcset="" /> : <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={spineer} alt="" srcset="" />
+                            }
+                            
                         </div>
                     </div>
                 </Jumbotron>
@@ -61,6 +69,7 @@ const ExploreMore = () => {
                     <ListGroup.Item as="li" className="bg-transparent border-0 mx-2 p-2 youtubeColor text-center"><FontAwesomeIcon className="footerIconSize" icon={faYoutube}/></ListGroup.Item>
                 </ListGroup>
             </footer>
+            <Footer></Footer>
         </div>
     );
 };

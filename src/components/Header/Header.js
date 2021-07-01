@@ -1,9 +1,11 @@
 import React from 'react';
 import './Header.css'
-const Header = () => {
+const Header = (props) => {
     return (
         <div className="headerContainer">
-            <h1>Sports Zone</h1>
+            {
+                props.children
+            }
         </div>
     );
 };
