@@ -32,7 +32,7 @@ const ExploreMore = () => {
     const { dateFirstEvent, strCountry, strSport, strGender, strDescriptionEN, strLeague, strLogo } = leagueDetail;
     return (
         <div>
-            <Header>
+            <Header> 
                 <img src={strLogo} alt="" />
             </Header>
             <div className="container">
