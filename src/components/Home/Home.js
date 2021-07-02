@@ -25,7 +25,7 @@ const Home = () => {
                 <div className="container">
                     <div className="row">
                         {
-                            league.slice(38, 60).map(singleLeague => <LeagueCard singleLeague={singleLeague}></LeagueCard>)
+                            league.slice(38, 60).map(singleLeague => <LeagueCard key={singleLeague.idLeague} singleLeague={singleLeague}></LeagueCard>)
                         }
                     </div>
                 </div>

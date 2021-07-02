@@ -27,7 +27,7 @@ const ExploreMore = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => setLeagueDetail(data.leagues['0']));
-    },[])
+    },[id])
 
     const { dateFirstEvent, strCountry, strSport, strGender, strDescriptionEN, strLeague, strLogo } = leagueDetail;
     return (
@@ -37,7 +37,7 @@ const ExploreMore = () => {
             </Header>
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link className="btn btn-primary mt-3" to='/'><FontAwesomeIcon icon={faArrowLeft}/> Home</Link>
+                    <Link className="btn btn-primary mt-3" to='/'><FontAwesomeIcon icon={faArrowLeft}/> Back</Link>
                 </div>
             </div>
             <div className="container mt-3">

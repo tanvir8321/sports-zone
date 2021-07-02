@@ -2,24 +2,18 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Card, Button } from 'react-bootstrap';
-import leagueOne from '../../images/Leauge Logo/image 1.png';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useState } from 'react';
 import { useEffect } from 'react';
 const LeagueCard = (props) => {
     const [ logo, setLogo ] = useState({});
-    const {idLeague,strLeague,strLeagueAlternate,strSport} = props.singleLeague;
+    const {idLeague,strLeague,strSport} = props.singleLeague;
     useEffect(()=>{
         const url = `https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=${idLeague}`;
         fetch(url)
         .then(res => res.json())
         .then(data => setLogo(data.leagues['0']));
-    },[])
+    },[idLeague])
     const { strLogo } = logo;
     return (
             <div className="col-12 col-md-6 col-lg-4 mb-4">
