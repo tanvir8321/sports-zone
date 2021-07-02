@@ -5,19 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ListGroup, Jumbotron } from 'react-bootstrap';
 import Header from '../Header/Header';
 import './ExploreMore.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import maleLeague from '../../images/male.png';
 import femaleLeague from '../../images/female.jpg';
 import spineer from '../../images/spineer.gif';
 import Footer from '../Footer/Footer';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+
 
 const ExploreMore = () => {
     let { id } = useParams();
@@ -54,7 +49,7 @@ const ExploreMore = () => {
                         </div>
                         <div className="col-12 col-md-6">
                             {
-                                strGender === 'Male' ? <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={maleLeague} alt="" srcset="" /> : strGender === 'Female' ? <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={femaleLeague} alt="" srcset="" /> : <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={spineer} alt="" srcset="" />
+                                strGender === 'Male' ? <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={maleLeague} alt="" /> : strGender === 'Female' ? <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={femaleLeague} alt="" /> : <img className="img-fluid height-control d-block ml-md-auto mt-sm-3" src={spineer} alt="" />
                             }
                             
                         </div>

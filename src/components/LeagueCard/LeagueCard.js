@@ -2,9 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Card, Button } from 'react-bootstrap';
-import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 const LeagueCard = (props) => {
     const [ logo, setLogo ] = useState({});
     const {idLeague,strLeague,strSport} = props.singleLeague;
